@@ -12,6 +12,7 @@ int Vite;
 int Record;
 int Jolly;
 int Penalty;
+int Random;
 
 bool Cliccato = false;
 
@@ -32,6 +33,7 @@ void setup() {
   Partite = 0;
   Record = 0;
   Vite = 3;
+  Random = random(1, 5);
 
 }
 
@@ -42,19 +44,27 @@ void loop() {
 
 void PiGreco()
 {
-  lcd.setCursor(0, 0);
-  lcd.println( "VITE:" + String() + "PARTITE:" + Partite);
-  while(digitalRead(PulsanteAccensione) == HIGH)
-  {
+  while(digitalRead(PulsanteAccensione) == LOW){} 
+    lcd.setCursor(0, 0);
+    lcd.println( "VITE:" + String() + "PARTITE:" + String(Partite));
     lcd.setCursor(0, 1);
+    while(Vite > 0)
+    {
+      if(Random == 1)
+      {
+        lcd.setCursor(0,1);
+        lcd.println("π");
+        while(digitalRead(PulsanteA) == LOW) {}
+        Record++;
+      }
+    }
     
-  }
   
 }
 
-void CalcolaVite(int Vite+
-)
+void CalcolaVite(int Vite)
 {
+  while(digitalRead(PulsanteAccensione) == LOW) {}
   
 }
 
@@ -63,6 +73,7 @@ void CalcolaRecord(int Record)
   while(digitalRead(PulsanteAccensione) == LOW) {}
   while(Cliccato == false)
   {
+    
   }
 }
 
