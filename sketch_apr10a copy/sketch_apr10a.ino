@@ -14,8 +14,6 @@ int Jolly;
 int Penalty;
 int Random;
 int RandomSpeciali;
-int Tempo1;
-int Tempo2;
 
 bool Cliccato = false;
 
@@ -35,30 +33,31 @@ void setup() {
   Partite = 0;
   Record = 0;
   Vite = 3;
+  Random = random(1, 7);
+  RandomSpeciali = random(0, 5);
 
 }
 
 void loop() {
   
+
+}
+
+void PiGreco()
+{
   while(digitalRead(PulsanteAccensione) == LOW) {} 
     lcd.setCursor(0, 0);
-    lcd.println( "VITE:" + String(Vite) + "PARTITE:" + String(Partite));  
-      
+    lcd.println( "VITE:" + String(Vite) + "PARTITE:" + String(Partite));
     while(Vite > 0)
-    {    
-      Random = random(1, 7);
-      RandomSpeciali = random(0, 5);
-      
+    {
       if(Random == 1)
       {
-        Tempo1 = millis();
         lcd.setCursor(0, 1);
         lcd.println("π");
-        Tempo2 = millis();
         while(digitalRead(PulsanteA) == LOW) {}
         Record++;
-        CalcolaPartite(Partite);  
-        if(digitalRead(PulsanteB) == HIGH || digitalRead(PulsanteC) == HIGH || digitalRead(PulsanteD) == HIGH || digitalRead(PulsanteE) == HIGH || (Tempo2 - Tempo1) > 2000)
+        CalcolaPartite(Partite);
+        if(digitalRead(PulsanteB) == HIGH || digitalRead(PulsanteC) == HIGH || digitalRead(PulsanteD) == HIGH || digitalRead(PulsanteE) == HIGH)
         {
           Vite--;
           CalcolaPartite(Partite);
@@ -66,14 +65,12 @@ void loop() {
       }
       else if(Random == 2)
       {
-        Tempo1 = millis();
         lcd.setCursor(0, 2);
         lcd.println("π");
-        Tempo2 = millis();
         while(digitalRead(PulsanteB) == LOW) {}
         Record++;
         CalcolaPartite(Partite);
-        if(digitalRead(PulsanteA) == HIGH || digitalRead(PulsanteC) == HIGH || digitalRead(PulsanteD) == HIGH || digitalRead(PulsanteE) == HIGH || (Tempo2 - Tempo1) > 2000)
+        if(digitalRead(PulsanteA) == HIGH || digitalRead(PulsanteC) == HIGH || digitalRead(PulsanteD) == HIGH || digitalRead(PulsanteE) == HIGH)
         {
           Vite--;
           CalcolaPartite(Partite);
@@ -81,14 +78,12 @@ void loop() {
       }
       else if(Random == 3)
       {
-        Tempo1 = millis();
         lcd.setCursor(0, 3);
         lcd.println("π");
-        Tempo2 = millis();
         while(digitalRead(PulsanteC) == LOW) {}
         Record++;
         CalcolaPartite(Partite);
-        if(digitalRead(PulsanteB) == HIGH || digitalRead(PulsanteA) == HIGH || digitalRead(PulsanteD) == HIGH || digitalRead(PulsanteE) == HIGH || (Tempo2 - Tempo1) > 2000)
+        if(digitalRead(PulsanteB) == HIGH || digitalRead(PulsanteA) == HIGH || digitalRead(PulsanteD) == HIGH || digitalRead(PulsanteE) == HIGH)
         {
           Vite--;
           CalcolaPartite(Partite);
@@ -96,14 +91,12 @@ void loop() {
       }
       else if(Random == 4)
       {
-        Tempo1 = millis();
         lcd.setCursor(0, 4);
         lcd.println("π");
-        Tempo2 = millis();
         while(digitalRead(PulsanteD) == LOW) {}
         Record++;
         CalcolaPartite(Partite);
-        if(digitalRead(PulsanteB) == HIGH || digitalRead(PulsanteC) == HIGH || digitalRead(PulsanteA) == HIGH || digitalRead(PulsanteE) == HIGH || (Tempo2 - Tempo1) > 2000)
+        if(digitalRead(PulsanteB) == HIGH || digitalRead(PulsanteC) == HIGH || digitalRead(PulsanteA) == HIGH || digitalRead(PulsanteE) == HIGH)
         {
           Vite--;
           CalcolaPartite(Partite);
@@ -111,14 +104,12 @@ void loop() {
       }
       else if(Random == 5)
       {
-        Tempo1 = millis();
         lcd.setCursor(0, 5);
         lcd.println("π");
-        Tempo2 = millis();
         while(digitalRead(PulsanteE) == LOW) {}
         Record++;
         CalcolaPartite(Partite);
-        if(digitalRead(PulsanteB) == HIGH || digitalRead(PulsanteC) == HIGH || digitalRead(PulsanteD) == HIGH || digitalRead(PulsanteA) == HIGH || (Tempo2 - Tempo1) > 2000)
+        if(digitalRead(PulsanteB) == HIGH || digitalRead(PulsanteC) == HIGH || digitalRead(PulsanteD) == HIGH || digitalRead(PulsanteA) == HIGH)
         {
           Vite--;
           CalcolaPartite(Partite);
@@ -126,15 +117,13 @@ void loop() {
       }
       else if(Random == 6)
       {
-        Tempo1 = millis();
         lcd.setCursor(RandomSpeciali, 0);
         lcd.println("J");
-        Tempo2 = millis();
         if(RandomSpeciali == 0)
         {
           
         }
-        if(digitalRead(PulsanteB) == HIGH || digitalRead(PulsanteC) == HIGH || digitalRead(PulsanteD) == HIGH || digitalRead(PulsanteA) == HIGH || (Tempo2 - Tempo1) > 2000) 
+        if(digitalRead(PulsanteB) == HIGH || digitalRead(PulsanteC) == HIGH || digitalRead(PulsanteD) == HIGH || digitalRead(PulsanteA) == HIGH)
         {
           Vite--;
           CalcolaPartite(Partite);
@@ -142,14 +131,12 @@ void loop() {
       }
       else if(Random == 7)
       {
-        Tempo1 = millis();
         lcd.setCursor(0, random(0, 5));
         lcd.println("P");
-        Tempo2 = millis();
         while(digitalRead(PulsanteE) == LOW) {}
         Record++;
         CalcolaPartite(Partite);
-        if(digitalRead(PulsanteB) == HIGH || digitalRead(PulsanteC) == HIGH || digitalRead(PulsanteD) == HIGH || digitalRead(PulsanteA) == HIGH || (Tempo2 - Tempo1) > 2000)
+        if(digitalRead(PulsanteB) == HIGH || digitalRead(PulsanteC) == HIGH || digitalRead(PulsanteD) == HIGH || digitalRead(PulsanteA) == HIGH)
         {
           Vite--;
           CalcolaPartite(Partite);
