@@ -46,7 +46,7 @@ void loop() {
       
     while(Vite > 0)
     {    
-      Random = random(1, 7);
+      Random = random(1, 8);
       RandomSpeciali = random(0, 5);
       
       if(Random == 1)
